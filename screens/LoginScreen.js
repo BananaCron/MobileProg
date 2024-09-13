@@ -1,10 +1,12 @@
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { FontAwesome6 } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 
-const LoginScreen = () => {
+
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -14,7 +16,7 @@ const LoginScreen = () => {
       <Text style={styles.title}>Log In</Text>
 
       <View style={styles.inputContainer}>
-        <FontAwesome5 name="user" size={20} color="#294380" style={styles.icon} />
+        <FontAwesome5 name="user" size={20} color="#3DC2EC" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Email or User Name"
@@ -23,14 +25,14 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.inputContainer}>
-        <MaterialCommunityIcons name="lock" size={20} color="#294380" style={styles.icon} />
+        <MaterialCommunityIcons name="lock" size={20} color="#3DC2EC" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#707070"
           secureTextEntry={true}
         />
-        <Entypo name="eye-with-line" size={20} color="#294380" style={styles.eyeIcon} />
+        <Entypo name="eye-with-line" size={20} color="#3DC2EC" style={styles.eyeIcon} />
       </View>
 
       <TouchableOpacity style={styles.forgotPassword}>
@@ -44,7 +46,6 @@ const LoginScreen = () => {
       <Text style={styles.orText}>Or Log In With</Text>
 
       <View style={styles.socialButtons}>
-        {/* Replace with your actual social media icons */}
         <TouchableOpacity style={styles.socialButton}>
           <FontAwesome5 name="google" size={25} color="#fff" />
         </TouchableOpacity>
@@ -52,7 +53,7 @@ const LoginScreen = () => {
           <Entypo name="facebook" size={25} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialButton}>
-          <MaterialCommunityIcons name="microsoft" size={25} color="#fff" />
+          <FontAwesome6 name="x-twitter" size={25} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialButton}>
           <FontAwesome5 name="linkedin" size={25} color="#fff" />
@@ -61,7 +62,7 @@ const LoginScreen = () => {
 
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Don't have account?</Text>
-        <TouchableOpacity style={styles.signupButton}>
+        <TouchableOpacity style={styles.signupButton} onPress={() => navigation.navigate('Register')}>
           <Text style={styles.signupButtonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
@@ -79,14 +80,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoImage: {
-    width: 250,
-    height: 250,
+    width: 240,
+    height: 240,
   },
   title: {
-    color: '#294380',
+    color: '#3DC2EC',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 30,
+    marginTop: 10,
+    marginBottom: 20,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -110,12 +112,15 @@ const styles = StyleSheet.create({
   forgotPassword: {
     marginTop: 10,
     marginBottom: 20,
+    width: '100%',
+    alignItems: 'flex-end',
   },
   forgotPasswordText: {
-    color: '#294380',
+    color: '#3DC2EC',
+    textAlign: 'right',
   },
   loginButton: {
-    backgroundColor: '#294380',
+    backgroundColor: '#3DC2EC',
     padding: 15,
     borderRadius: 30,
     marginTop: 20,
@@ -132,34 +137,36 @@ const styles = StyleSheet.create({
   },
   socialButtons: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginTop: 20,
     marginBottom: 20,
     width: '100%',
   },
   socialButton: {
-    backgroundColor: '#294380',
+    backgroundColor: '#3DC2EC',
     padding: 12,
-    borderRadius: 30,
-    width: '22%',
+    borderRadius: 19,
+    width: '15%',
+    marginHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 200,
+    shadowRadius: 100,
+    elevation: 5,
   },
   signupContainer: {
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: 20,
   },
   signupText: {
     marginRight: 10,
   },
   signupButton: {
-    backgroundColor: '#294380',
-    padding: 8,
-    borderRadius: 8,
-    alignItems: 'center',
   },
   signupButtonText: {
-    color: '#fff',
+    color: '#3DC2EC',
     fontWeight: 'bold',
   },
 })
